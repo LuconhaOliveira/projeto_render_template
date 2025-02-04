@@ -20,6 +20,10 @@ def pagina_principal():
     texto_curioso = random.choice(curiosidades)
     return render_template("index.html", cor_fundo=cor_fundo, imagem=imagem, texto_curioso=texto_curioso)
 
+@app.route("/frases")
+def pagina_frases():
+    return render_template("cadastro-frases.html", frases=curiosidades)
+
 #@app.route("/sobre")
 # def pagina_sobre():
 #     cor_fundo = random.choice(cores)

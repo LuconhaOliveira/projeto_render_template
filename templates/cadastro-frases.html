@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0;
+        }
+        
+        form{
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-input{
+            width: 30%;
+            height: 100%;
+            display: flex;
+            margin: auto;
+        }
+
+        .card{
+            width: 30%;
+            height: 100%;
+            display: flex;
+            margin: auto;
+        }
+    </style>
+
+    <title>Cadastro de frases</title>
+</head>
+
+<body>
+    <section class="container-body">
+        <form class="col s12 form-input">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">First Name</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+        </form>
+        {%for frase in frases%}
+        <div class="row">
+            <div class="col s12 m5">
+                <div class="card-panel teal card">
+                    <span class="white-text">
+                        {{frase}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </section>
+</body>
+
+</html>
