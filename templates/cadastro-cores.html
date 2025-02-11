@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,34 +40,31 @@
             margin: auto;
         }
     </style>
-
     <title>Cadastro de frases</title>
 </head>
-
 <body>
     <section class="container-body">
-        <form class="col s12 form-input" action="/post/cadastrarfrase" method="post">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="icon_prefix2" class="materialize-textarea" name="frase"></textarea>
-                    <label for="icon_prefix2">First Name</label>
-                </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-        </form>
-        {%for frase in frases%}
-        <div class="row">
-            <div class="col s12 m5">
-                <div class="card-panel teal card">
-                    <span class="white-text">
-                        {{frase}}
-                    </span>
-                </div>
+        <form class="col s12 form-input" action="/post/cadastrarcor" method="post">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea" name="cor"></textarea>
+                <label for="icon_prefix2">First Name</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+    </form>
+    {%for cor in cores%}
+    <div class="row">
+        <div class="col s12 m5">
+            <div class="card-panel card" style="background-color: {{cor}};">
+                <span class="black-text">
+                    {{cor}}
+                </span>
             </div>
         </div>
-        {%endfor%}
+    </div>
+    {%endfor%}
     </section>
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import random
 
 app = Flask(__name__)
@@ -13,18 +13,34 @@ curiosidades = ["não existe falantes de latim vivos atualmente",
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias iusto pariatur sed, quos voluptatem maiores eaque facere deleniti voluptatum aliquid fugiat commodi alias cum, culpa animi explicabo tempore unde consectetur."]
 
 #ROTAS
-@app.route("/")
+@app.route("/", methods=["GET"])
 def pagina_principal():
     cor_fundo = random.choice(cores)
     imagem = random.choice(imagens)
     texto_curioso = random.choice(curiosidades)
     return render_template("index.html", cor_fundo=cor_fundo, imagem=imagem, texto_curioso=texto_curioso)
 
-@app.route("/frases")
+@app.route("/frases", methods=["GET"])
 def pagina_frases():
     return render_template("cadastro-frases.html", frases=curiosidades)
 
-#@app.route("/sobre")
+@app.route("/cores", methods=["GET"])
+def pagina_cores():
+    return render_template("cadastro-cores.html", cores=cores)
+
+@app.route("/post/cadastrarcor", methods=["POST"])
+def post_cadastrarcor():
+    cor_cadastrada = request.form.get("cor")
+    cores.append(cor_cadastrada)
+    return redirect("/cores")
+
+@app.route("/post/cadastrarfrase", methods=["POST"])
+def post_cadastrarfrase():
+    frase_cadastrada = request.form.get("frase")
+    curiosidades.append(frase_cadastrada)
+    return redirect("/frases")
+
+#@app.route("/sobre", methods=["GET"])
 # def pagina_sobre():
 #     cor_fundo = random.choice(cores)
 #     return render_template("sobre.html", cor_fundo=cor_fundo)
