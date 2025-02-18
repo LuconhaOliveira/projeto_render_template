@@ -1,16 +1,9 @@
 from flask import Flask, render_template, request, redirect
 import random
+from data.listas_configuracao import *
+import mysql.connection
 
 app = Flask(__name__)
-
-#arrays
-cores = ["red","blue","green","#BABACA","#666666"]
-imagens = ["img1.jpg","img2.jpg","img3.jpg","img4.jpg","img5.jpg"]
-curiosidades = ["não existe falantes de latim vivos atualmente",
-                "latim é usado até hoje nas ciências",
-                "lorem ipsum é um texto em latim",
-                "lorem ipsum não tem significado completo pois o texto foi alterado",
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias iusto pariatur sed, quos voluptatem maiores eaque facere deleniti voluptatum aliquid fugiat commodi alias cum, culpa animi explicabo tempore unde consectetur."]
 
 #ROTAS
 @app.route("/", methods=["GET"])
@@ -39,6 +32,12 @@ def post_cadastrarfrase():
     frase_cadastrada = request.form.get("frase")
     curiosidades.append(frase_cadastrada)
     return redirect("/frases")
+
+@app.route("/cores/delete/<indice_cor>")
+def delete_cores(indice_cor):
+    indice_cor=int(indice_cor)
+    cores.pop(indice_cor)
+    return redirect("/cores")
 
 #@app.route("/sobre", methods=["GET"])
 # def pagina_sobre():
